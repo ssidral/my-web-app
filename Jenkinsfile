@@ -9,6 +9,10 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+            	script{
+            	   env.GIT_CURL_VERBOSE = '1'
+            	   env.GIT_TRACE = '1'
+            	   }
                 git branch: 'master', url: '{https://github.com/ssidral/my-web-app.git}',
                 credentialsId: 'git-token'
             }
