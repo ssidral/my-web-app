@@ -6,10 +6,6 @@ pipeline {
         DOCKER_TAG = "latest"
     }
     
-    tools {
-    	git 'DefaultGit'
-    	}
-    	
     stages {
         stage('Checkout') {
             steps {
