@@ -5,7 +5,11 @@ pipeline {
         DOCKER_IMAGE = "{shrinivassidral}/{my-web-app}"
         DOCKER_TAG = "latest"
     }
- 
+    
+    tools {
+    	git 'DefaultGit'
+    	}
+    	
     stages {
         stage('Checkout') {
             steps {
