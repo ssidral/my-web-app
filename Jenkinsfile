@@ -10,6 +10,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'master', url: '{https://github.com/ssidral/my-web-app.git}'
+                credentialsId: 'git-token'
             }
         }
  
