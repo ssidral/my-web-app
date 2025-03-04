@@ -9,13 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-            	script{
-            	   env.GIT_CURL_VERBOSE = '1'
-            	   env.GIT_TRACE = '1'
-            	   checkout scm
-            	   }
-                git branch: 'master', url: '{https://github.com/ssidral/my-web-app.git}',
-                credentialsId: 'git-token'
+                git branch: 'master', url: 'https://github.com/ssidral/my-web-app.git',
             }
         }
  
@@ -36,7 +30,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io/v1/', 'shrinivassidral') {
+                    docker.withRegistry('https://index.docker.io/v1/', 'docker-hub-credentials') {
                         docker.image("${DOCKER_IMAGE}:${DOCKER_TAG}").push()
                     }
                 }
